@@ -23,6 +23,14 @@ class Artist
     @id = result[0]["id"].to_i
   end
 
+  def albums()
+    sql = "SELECT * from albums WHERE artist_id = $1"
+    values = [@id]
+    array_of_hashes = SqlRunner.run(sql, values)
+    array_of_objects = array_of_hashes.map{|hash| Album.new(hash)}
+    return array_of_objects
+  end
+
 
   def self.delete_all()
     sql = "DELETE FROM artists"

@@ -29,7 +29,13 @@ album2 = Album.new({
 
 album2.save()
 
+album3 = Album.new({
+  "title" => "In Utero",
+  "genre" => "Grunge",
+  "artist_id" => artist1.id
+  })
 
+album3.save()
 
 
 
