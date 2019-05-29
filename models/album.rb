@@ -66,4 +66,12 @@ class Album
     return array_of_objects
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM albums WHERE id = $1"
+    values = [id]
+    album_hash = SqlRunner.run(sql, values)[0]
+    album_object = Album.new(album_hash)
+    return album_object
+  end
+
 end
